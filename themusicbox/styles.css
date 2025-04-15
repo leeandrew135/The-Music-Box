@@ -1,0 +1,230 @@
+:root {
+  --grey30: rgb(30, 30, 30);
+}
+
+body {
+  margin: 0;
+  height: 100vh; /* Full viewport height */
+  background-size: cover; /* Ensure the background image covers the entire page */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-color: black;
+}
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* DARKEN THE BACKGROUND */
+  pointer-events: none; /* Ensure the overlay does not block any interactions */
+  z-index: -1; /* Place it behind the content */
+}
+
+/* OVERLAY FOR THEME TRANSITION */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8); /* Dark overlay */
+  z-index: 1000; /* Ensure the overlay covers the entire screen */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Smooth fade-in/fade-out effect */
+  pointer-events: none; /* Prevent interactions while overlay is active */
+}
+.overlay.active {
+  opacity: 1;
+}
+
+/* CONTAINER FOR TOP PART */
+.container-top {
+  width: 100%;
+  height: 550px;
+  max-height: 70%;
+  position: relative;
+  top: 100px;
+  /* background-color: blue; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease; /* Smooth transition for the top container movement */
+}
+/* MUSIC VISUALISER */
+#visualiser {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+/* IMAGE */
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1); /* Original size */
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05); /* Slightly bigger */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1); /* Back to original size */
+  }
+}
+.image-player {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for image dimensions */
+  z-index: 2; /* Above the visualizer */
+  max-height: 300px;
+  animation: pulse 5s infinite; /* Apply the animation with a 3-second duration, looping infinitely */
+}
+
+.url-input {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+#youtube-url {
+  padding: 10px;
+  width: 300px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+#play-audio {
+  padding: 10px 20px;
+  background-color: #ff4500;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#play-audio:hover {
+  background-color: #ff6347;
+}
+
+/* VISUALISER */
+canvas {
+  width: 100vw;
+  height: 300px;
+}
+
+.music-selector:hover {
+  background-color: rgb(90, 90, 90); /* Darker color on hover */
+}
+
+/* CONTAINER FOR BOTTOM HALF */
+.container-bottom {
+  width: 100%;
+  height: auto;
+  max-height: 30%;
+  position: fixed;
+  bottom: 0;
+  /* background-color: red; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease; /* Smooth transition for the container movement */
+
+  z-index: 1;
+}
+
+/* CONTROLLER */
+.controller {
+  width: 70px;
+  height: 70px;
+  background-color: rgb(
+    40,
+    40,
+    40
+  ); /* Add background color to make the div visible */
+  display: flex;
+  justify-content: space-evenly; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  border: 5px solid --grey30;
+  border-radius: 5px; /* Optional: Rounded corners for style */
+  margin-bottom: 15px;
+}
+.button-controller {
+  width: 60px; /* Make the width 80% of the height */
+  height: 60px; /* Make the height 80% of the parent container's height */
+  background-color: white; /* Set button background color */
+  border: 5px solid rgb(30, 30, 30); /* Remove default button border */
+  border-radius: 5px; /* Optional: Rounded corners for the buttons */
+  display: flex;
+  justify-content: center; /* Center the text horizontally inside the button */
+  align-items: center; /* Center the text vertically inside the button */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+.button-controller:hover {
+  /* background-color: gray; Darker color when button is hovered */
+}
+.image-control {
+  width: 80%;
+  height: 80%;
+  max-height: 80%;
+  max-width: 80%;
+}
+
+/* TIMELINE */
+.timeline {
+  width: 700px;
+  height: 75px;
+  background-color: rgb(
+    40,
+    40,
+    40
+  ); /* Add background color to make the div visible */
+  display: flex;
+  justify-content: space-evenly; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  border: 5px solid rgb(30, 30, 30);
+  border-radius: 5px; /* Optional: Rounded corners for style */
+  position: relative;
+}
+.button-timeline-collapse {
+  width: 100px;
+  height: 25px;
+  background: rgb(30, 30, 30);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-timeline {
+  /* transform: translate(-50%, 0); */
+  max-height: 60%;
+  rotate: 180deg;
+  transition: transform 0.15s ease-in-out; /* Add transition for smooth effect */
+}
+.button-timeline {
+  width: 75px; /* Make the width 80% of the height */
+  height: 70%; /* Make the height 80% of the parent container's height */
+  background-color: rgb(60, 60, 60); /* Set button background color */
+  color: white; /* Set button text color */
+  border: 3px solid rgb(30, 30, 30); /* Remove default button border */
+
+  border-radius: 5px; /* Optional: Rounded corners for the buttons */
+  display: flex;
+  justify-content: center; /* Center the text horizontally inside the button */
+  align-items: center; /* Center the text vertically inside the button */
+  cursor: pointer; /* Change cursor to pointer on hover */
+
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+.button-timeline:hover {
+  background-color: rgb(50, 50, 50);
+}

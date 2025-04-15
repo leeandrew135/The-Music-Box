@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Music Box</title>
+    <!-- IMPORT styles.css -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+  </head>
+  <body>
+    <!-- PRE LOADED AUDIO FROM LOCAL FILES -->
+    <audio
+      id="audio-player"
+      src="resources/music/DPR IAN - SKINS.mp3"
+      preload="auto"
+    ></audio>
+
+    <!-- YouTube URL Input -->
+    <div class="url-input">
+      <input type="text" id="youtube-url" placeholder="Enter YouTube URL" />
+      <button id="play-audio">Play YouTube Audio</button>
+    </div>
+
+    <!-- TOP SECTION -->
+    <div class="container-top">
+      <!-- CANVAS FOR VISUALISER -->
+      <canvas id="visualiser" width="100%" height="50%"></canvas>
+
+      <img
+        id="image-player"
+        src="resources/players/player5.png"
+        class="image-player"
+      />
+    </div>
+
+    <!-- BOTTOM SECTION -->
+    <div class="container-bottom">
+      <!-- MUSIC CONTROLLER -->
+      <div class="controller">
+        <button id="button-play" class="button-controller">
+          <img
+            id="button-play"
+            src="resources/icons/play.png"
+            class="image-control"
+          />
+        </button>
+      </div>
+
+      <!-- TIMELINE -->
+      <div class="button-timeline-collapse" onclick="toggleTimeline()">
+        <img class="icon-timeline" src="resources/icons/arrow.png" />
+      </div>
+      <div class="timeline">
+        <div class="button-timeline">1877</div>
+        <div class="button-timeline">1935</div>
+        <div class="button-timeline">1966</div>
+        <div class="button-timeline">1998</div>
+        <div class="button-timeline">20XX</div>
+      </div>
+    </div>
+
+    <!-- IMPORT SCRIPTS -->
+    <script src="scripts/visualiser.js"></script>
+    <script src="scripts/theme.js"></script>
+    <script src="scripts/timeline.js"></script>
+  </body>
+</html>
