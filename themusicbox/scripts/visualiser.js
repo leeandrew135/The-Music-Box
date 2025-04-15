@@ -18,7 +18,7 @@ document.getElementById("button-play").addEventListener("click", () => {
 // INITIALISE WHEN DOM CONTENT LOADED
 document.addEventListener("DOMContentLoaded", () => {
   const musicButton = document.getElementById("button-play");
-  const audioElement = new Audio("resources/music/DPR IAN - SKINS.mp3");
+  const audioElement = new Audio("resources/music/inputfile.mp3");
   const canvas = document.getElementById("visualiser");
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
